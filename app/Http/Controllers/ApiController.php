@@ -21,7 +21,8 @@ class ApiController extends Controller
         $response['news'] = $apiModel->fetchNewsFromSource($response['sourceId']);
         $response['newsSources'] = $this->fetchAllNewsSources();
 
-        return view('welcome', $response);
+        // return view('welcome', $response);
+        return response()->json($response['newsSources']);
     }
 
     /**

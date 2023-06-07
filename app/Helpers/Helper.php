@@ -11,17 +11,17 @@ class Helper
      * @return mixed
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function makeApiCalls($url_params)
+    public function makeGuardianAPiCall($url_params)
     {
         try {
             $client = new Client();
-            $apiRequest = $client->request('GET', config('app.news_api_url') .$url_params.'&apiKey=' . config('app.news_api_key'));
+            $apiRequest = $client->request('GET', config('app.the_guardian_url') .'?api-key=' . config('app.the_guardian_key') .$url_params);
             return json_decode($apiRequest->getBody()->getContents(), true);
         } catch (RequestException $e) {
             //For handling exception
-            echo Psr7\str($e->getRequest());
+            return json_decode($e->getRequest());
             if ($e->hasResponse()) {
-                echo Psr7\str($e->getResponse());
+                return json_decode($e->getResponse());
             }
         }
     }

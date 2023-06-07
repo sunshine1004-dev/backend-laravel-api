@@ -229,4 +229,8 @@ return [
     'default_news_source' => env('DEFAULT_NEWS_SOURCE', 'CNN'),
 
     'default_news_source_id' => env('DEFAULT_NEWS_SOURCE_ID', 'cnn'),
+
+    'the_guardian_url' => env('THE_GUARDIAN_URL', null),
+
+    'the_guardian_key' => env('THE_GUARDIAN_KEY', null),
 ];
